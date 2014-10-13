@@ -18,7 +18,7 @@ lib64/
 parts/
 sdist/
 var/
-RabbitMQ.egg-info/
+*.egg-info/
 .installed.cfg
 *.egg
 
@@ -52,12 +52,3 @@ docs/_build/
 
 # PyBuilder
 target/
-
-# temp
-*.bak
-*.tmp
-*.*~
-
-# virtualenv
-RabbitMQ-venv/
-.dev/activate
