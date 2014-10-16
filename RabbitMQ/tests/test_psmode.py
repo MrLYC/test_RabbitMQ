@@ -4,7 +4,6 @@
 from unittest import TestCase
 from functools import partial
 from threading import Thread
-import time
 
 import pika
 
@@ -93,7 +92,7 @@ class TestPSMode(TestCase):
             routing_key=queue1,
             body="")
 
-        time.sleep(0.1)
+        sub_thread.join()
 
         assert called[queue1] == 3
         assert called[queue2] == 1
