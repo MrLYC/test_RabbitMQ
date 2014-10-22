@@ -22,7 +22,7 @@ def parse_arguments(argv):
         "-s", "--server", action="store", default="localhost",
         help="RabbitMQ host which to connect")
     parser.add_argument(
-        "-p", "--port", action="store", default=5672,
+        "-p", "--port", action="store", default=5672, type=int,
         help="the port of RabbitMQ host")
 
     return parser.parse_args(argv)
