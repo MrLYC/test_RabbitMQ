@@ -22,6 +22,12 @@ def parse_arguments(argv):
         "-s", "--server", action="store", default="localhost",
         help="RabbitMQ host which to connect")
     parser.add_argument(
+        "-u", "--user", action="store", default="guest",
+        help="user to connect")
+    parser.add_argument(
+        "-w", "--password", action="store", default="guest",
+        help="password to connect")
+    parser.add_argument(
         "-p", "--port", action="store", default=5672, type=int,
         help="the port of RabbitMQ host")
 
@@ -37,7 +43,9 @@ def main(argv):
     args = parse_arguments(argv)
 
     connection = pika.BlockingConnection(pika.ConnectionParameters(
-        host=args.server, port=args.port))
+        host=args.server, port=args.port,
+        credentials=pika.credentials.PlainCredentials(
+            args.user, args.password)))
 
     channel = connection.channel()
 
